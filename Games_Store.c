@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <conio.h>
 
 #define TOTAL_GAMES 5 
 
@@ -9,18 +11,19 @@ typedef struct{
     char platform[25];
 }Gameitems;
 
-int arr[5],tmep;
+int arr[5],temp;
 
-void store_menu(){
-    int choice;
-        Gameitems store[TOTAL_GAMES]={
+Gameitems store[TOTAL_GAMES]={
         {"Cyber Punk 2077", 3999.00,"PC/XBOX"},
         {"GTA 6          ", 1999.00,"PS-5/Quantum computer"},
         {"GTA 5          ", 1500.00,"PC/Mobile"},
         {"RDR 4          ", 1399.00,"PC/Super Computer"},
         {"Super Mario    ", 1999.00,"Atari 8000"},
     };
-    printf("//--|| RYNOX PRTIVATE LTD ||--//\n");
+
+void store_menu(){
+    int choice;
+   printf("//--|| RYNOX PRTIVATE LTD ||--//\n");
     printf("------------------------------------------\n");    
     for(int i = 0; i < TOTAL_GAMES; i++){
         printf("* %d. %s-  %.2f (%s)\n",i+1,store[i].name,store[i].price,store[i].platform);
@@ -28,17 +31,19 @@ void store_menu(){
 
 }
 
-int prnt_recipt(){
+void prnt_recipt(){
     char choice[3];
     printf("Want do print Recipt (yes/no) ");
-    scanf("%s",choice);
+    scanf("%s",&choice);
 
-    if(strcmp(choice, "yes")==0){
+
         printf("===== PURCHASE RECEIPT =====");
-        for(int i = 0; i < tmep; i++){
-            printf("%d %s- %.2f\n",i+1,store[arr[i]].price,);
+        for(int i = 0; i < temp; i++){
+            // printf("%d %s- %.2f\n",i+1,store[arr[i]].price);
+            printf("%d",i);
+            getch();
+
         }
-    }
 }
 
 int purchase(){
@@ -76,17 +81,17 @@ int purchase(){
                     printf("\nChoose Game :");
                     scanf("%d",&ch1);
                     printf("\nThankYou, Good Deal !!");
-                    // prnt_recipt();
+                    prnt_recipt();
                     break;
                 }
                 case 2:
                     printf("\nEnter Number of Total Games :");
-                    scanf("%d",temp);
+                    scanf("%d",&temp);
                     for(int i = 0; i < temp; i++){
                         printf("\nSelect Game :");
                         scanf("%d",&arr[i]);
                     }
-                    // prnt_recipt();
+                    prnt_recipt();
                     break;
                 
                 default:
@@ -94,7 +99,8 @@ int purchase(){
                 }
             }while(choice != 0);
         
-        }case 2:
+        }break;
+        case 2:
         break;
         default:
             break;
